@@ -24,7 +24,7 @@ router.post<EmailRequest>('/api/email', EmailSchemaMiddleware, async (request) =
 		return new Response('Internal Server Error', { status: 500 });
 	}
 
-	return new Response('OK', { status: 200 });
+	return new Response('OK', { status: 200, 'Access-Control-Allow-Origin': '*', });
 });
 
 router.all('*', (request) => new Response('Not Found', { status: 404 }));

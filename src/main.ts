@@ -7,7 +7,7 @@ import { IEmail } from './schema/email';
 const router = Router();
 
 
-router.get<EmailRequest>('/test', AuthMiddleware, EmailSchemaMiddleware, async (request) => {
+router.get<EmailRequest>('/test', async (request) => {
 	const email = request.email as IEmail;
 
 	return new Response('OK', { status: 201 });

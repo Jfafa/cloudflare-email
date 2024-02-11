@@ -6,8 +6,15 @@ import { IEmail } from './schema/email';
 
 const router = Router();
 
+
+router.get<EmailRequest>('/test', AuthMiddleware, EmailSchemaMiddleware, async (request) => {
+	const email = request.email as IEmail;
+
+	return new Response('OK', { status: 201 });
+});
+
 // POST /api/email
-router.post<EmailRequest>('/api/email', AuthMiddleware, EmailSchemaMiddleware, async (request) => {
+router.post<EmailRequest>('/api/email', EmailSchemaMiddleware, async (request) => {
 	const email = request.email as IEmail;
 
 	try {
